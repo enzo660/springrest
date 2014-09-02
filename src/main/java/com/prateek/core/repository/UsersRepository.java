@@ -9,7 +9,7 @@ import com.prateek.core.domain.User;
  * For persistence
  */
 public interface UsersRepository {
-	  User save(User order);
+	  User save(User user);
 
 	  void delete(UUID key);
 

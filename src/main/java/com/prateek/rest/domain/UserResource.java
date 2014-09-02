@@ -12,13 +12,13 @@ import java.util.UUID;
  * to be returned by the web service 
  *
  */
-public class User {
+public class UserResource {
 
 
 	private final UUID key;
 	private String name;
 	
-	public User(String name){
+	public UserResource(String name){
 		this.key = UUID.randomUUID();
 		this.name = name;
 	}

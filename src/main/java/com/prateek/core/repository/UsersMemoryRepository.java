@@ -47,7 +47,6 @@ public class UsersMemoryRepository implements UsersRepository {
 
 	@Override
 	public List<User> findAll() {
-		// TODO Auto-generated method stub
 		return Collections.unmodifiableList(new ArrayList<User>(usersMap.values())); 
 	}
 
