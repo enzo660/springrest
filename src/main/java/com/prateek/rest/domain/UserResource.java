@@ -18,8 +18,8 @@ public class UserResource {
 	private final UUID key;
 	private String name;
 	
-	public UserResource(String name){
-		this.key = UUID.randomUUID();
+	public UserResource(String name, UUID key){
+		this.key = key;
 		this.name = name;
 	}
 
