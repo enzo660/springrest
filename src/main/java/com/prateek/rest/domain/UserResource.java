@@ -1,6 +1,5 @@
 package com.prateek.rest.domain;
 
-import java.util.UUID;
 
 /**
  * This is a Resource object, different from the domain object that 
@@ -15,11 +14,11 @@ import java.util.UUID;
 public class UserResource {
 
 
-	private final UUID key;
+	private final String id;
 	private String name;
 	
-	public UserResource(String name, UUID key){
-		this.key = key;
+	public UserResource(String name, String id){
+		this.id = id;
 		this.name = name;
 	}
 
@@ -31,9 +30,10 @@ public class UserResource {
 		this.name = name;
 	}
 
-	public UUID getKey() {
-		return key;
+	public String getId() {
+		return id;
 	}
+
 
 	
 }

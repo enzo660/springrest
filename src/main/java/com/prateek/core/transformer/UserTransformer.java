@@ -1,6 +1,6 @@
 package com.prateek.core.transformer;
 
-import com.prateek.core.domain.User;
+import com.prateek.persistence.domain.User;
 import com.prateek.rest.domain.UserResource;
 
 /**
@@ -11,7 +11,7 @@ import com.prateek.rest.domain.UserResource;
 public class UserTransformer {
 	
 	public static UserResource transform(User user){
-		UserResource userResource = new UserResource(user.getName(), user.getKey());
+		UserResource userResource = new UserResource(user.getName(), user.getId());
 		return userResource;
 	}
 	

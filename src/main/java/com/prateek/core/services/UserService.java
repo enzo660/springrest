@@ -1,10 +1,8 @@
 package com.prateek.core.services;
 
 import java.util.List;
-import java.util.UUID;
 
-import com.prateek.core.domain.User;
-import com.prateek.core.repository.UsersRepository;
+import com.prateek.persistence.domain.User;
 
 /**
  * Calls the back-end code and does additional processing (eg. eventing, etc.)
@@ -13,28 +11,14 @@ import com.prateek.core.repository.UsersRepository;
  * Can be modified to accept/return events
  *
  */
-public class UserService {
-
-	private final UsersRepository usersRepository;
+public interface UserService {
 	
-	public UserService(final UsersRepository usersRepository){
-		this.usersRepository = usersRepository;
-	}
+	//public User saveUser(User user);
 	
-	public User saveUser(User user){
-		return usersRepository.save(user);
-	}
+	//public void deleteUser(UUID key);
 	
-	public void deleteUser(UUID key){
-		usersRepository.delete(key);
-	}
+	public User findByName(String name);
 	
-	public User findByUserKey(UUID key){
-		return usersRepository.findById(key);
-	}
-	
-	public List<User> getAllUsers(){
-		return usersRepository.findAll();
-	}
+	public List<User> getAllUsers();
 	
 }
