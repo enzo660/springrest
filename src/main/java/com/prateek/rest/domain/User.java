@@ -11,13 +11,13 @@ package com.prateek.rest.domain;
  * to be returned by the web service 
  *
  */
-public class UserResource {
+public class User {
 
 
 	private final String id;
 	private String name;
 	
-	public UserResource(String name, String id){
+	public User(String name, String id){
 		this.id = id;
 		this.name = name;
 	}
@@ -34,6 +34,10 @@ public class UserResource {
 		return id;
 	}
 
-
+	public String toString(){
+		return String.format(
+                "User[id=%s, name='%s']",
+                id, name);
+	}
 	
 }
