@@ -7,7 +7,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -31,11 +33,20 @@ public class UserController {
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
 	public List<com.prateek.rest.domain.User> getAllUsers() {
-		List<com.prateek.rest.domain.User> userResources = new ArrayList<com.prateek.rest.domain.User>();
+		List<com.prateek.rest.domain.User> results = new ArrayList<com.prateek.rest.domain.User>();
 		for (User user : userService.getAllUsers()) {
-			userResources.add(UserTransformer.transform(user));
+			results.add(UserTransformer.transform(user));
 		}
-		return userResources;
+		return results;
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/{id}")
+    public ResponseEntity<com.prateek.rest.domain.User> viewUser(@PathVariable String id) {
+		User user = userService.findById(id);
+		com.prateek.rest.domain.User result = UserTransformer.transform(user);
+		
+		return new ResponseEntity<com.prateek.rest.domain.User>(result, HttpStatus.OK);
+		
 	}
 
 }
