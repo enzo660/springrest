@@ -28,7 +28,6 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
@@ -39,12 +38,32 @@ public class UserController {
 		}
 		return results;
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET, value = "/{id}")
-    public ResponseEntity<com.prateek.rest.domain.User> viewUser(@PathVariable String id) {
+	public ResponseEntity<com.prateek.rest.domain.User> viewUser(@PathVariable String id) {
 		User user = userService.findById(id);
+		if(user == null){
+			return new ResponseEntity<com.prateek.rest.domain.User>(HttpStatus.NOT_FOUND);
+		}
+		com.prateek.rest.domain.User result = UserTransformer.transform(user);
+
+		return new ResponseEntity<com.prateek.rest.domain.User>(result, HttpStatus.OK);
+
+	}
+
+	@RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+	public ResponseEntity<com.prateek.rest.domain.User> deleteUser(@PathVariable String id) {
+		
+		User user = userService.findById(id);
+		if(user == null){
+			return new ResponseEntity<com.prateek.rest.domain.User>(HttpStatus.NOT_FOUND);
+		}
 		com.prateek.rest.domain.User result = UserTransformer.transform(user);
 		
+		//Deletion code
+		userService.deleteUser(id);
+
+		//Return the deleted user
 		return new ResponseEntity<com.prateek.rest.domain.User>(result, HttpStatus.OK);
 		
 	}

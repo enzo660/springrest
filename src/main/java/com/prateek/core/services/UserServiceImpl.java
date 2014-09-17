@@ -17,11 +17,11 @@ public class UserServiceImpl implements UserService{
 //	public User saveUser(User user){
 //		return usersRepository.save(user);
 //	}
-//	
-//	public void deleteUser(UUID key){
-//		usersRepository.delete(key);
-//	}
-//	
+	
+	public void deleteUser(String id){
+		usersRepository.delete(id);
+	}
+	
 	public User findById(String name){
 		return usersRepository.findById(name);
 	}

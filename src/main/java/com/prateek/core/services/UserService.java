@@ -15,7 +15,7 @@ public interface UserService {
 	
 	//public User saveUser(User user);
 	
-	//public void deleteUser(UUID key);
+	public void deleteUser(String id);
 	
 	public User findById(String id);
 	
