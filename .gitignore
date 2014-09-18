@@ -35,3 +35,7 @@ target/springmvc/WEB-INF/lib/spring-webmvc-4.0.6.RELEASE.jar
 target/springmvc.war
 target/springmvc.war.original
 target/springmvc/WEB-INF/lib/validation-api-1.1.0.Final.jar
+src/main/webapp/META-INF/maven/org.springframework/springmvc/pom.xml
+target/springmvc/META-INF/maven/org.springframework/springmvc/pom.xml
+src/main/webapp/META-INF/MANIFEST.MF
+target/springmvc/META-INF/MANIFEST.MF
